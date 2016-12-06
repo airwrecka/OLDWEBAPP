@@ -1,6 +1,6 @@
 
 <!--  ==== HEADER ==== -->
-<?php $this->load->view('admin/components/main_head'); ?>
+<?php $this->load->view('admin/components/main_head', array('num' => 5, 'title' => 'SALES')); ?>
 
 
 <!--  ==== NAVBAR==== -->
@@ -16,4 +16,7 @@
         <p class="lead"></p>
       </div>
 
-    </div>
+</div>
+
+
+<?php $this->load->view('admin/components/main_tail'); ?>

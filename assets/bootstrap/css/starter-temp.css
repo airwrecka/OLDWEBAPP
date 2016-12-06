@@ -1,0 +1,51 @@
+body {
+  padding-top: 50px;
+  	background-image: url('BG.jpg');
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: center; 
+  
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+ 
+}
+.panel{
+  /* opacity: 0.4;
+    filter: alpha(opacity=50); */
+	
+	background: rgb(60, 60, 60);
+    background: rgba(60, 60, 60, 0.4);
+	border: 1px;
+}
+
+	
+h1{
+		font-size: 6em;
+		font-family: helvetica;
+		color: #fff;
+		margin:0;
+		padding:0;
+	}
+
+	h2{
+		font-size: 4em;
+		font-family: helvetica;
+		color: #fff;
+		margin:0;
+		padding:0;
+	}
+	h3{
+		font-size: 2em;
+		font-family: helvetica;
+		color: #fff;
+		margin:0;
+		padding:0;
+	}
+
+.header-align{
+	padding: 40px 15px;
+  text-align: left;
+	
+}

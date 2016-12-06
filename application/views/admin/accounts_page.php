@@ -1,6 +1,6 @@
 
 <!--  ==== HEADER ==== -->
-<?php $this->load->view('admin/components/main_head'); ?>
+<?php $this->load->view('admin/components/main_head', array('num' => 2, 'title' => 'ACCOUNTS')); ?>
 
 
 <!--  ==== NAVBAR==== -->
@@ -17,16 +17,23 @@
       </div>
 	
 
-	  <div class="col-md-10 col-md-offset-1 row">
 	 
-	<?php echo anchor('add_acc', '<button type="button" class="btn btn-primary">Add Account</button> '); ?>
-
-	
-		<div id ="datatables_filter" class="dataTables_filter">
-		</div>
+	  
+		<!-- echo anchor('add_acc', '<button type="button" class="btn btn-primary">Add Account</button> '); ? -->
+		 <div class="col-md-10 col-md-offset-1" padding="5px">
+		<div class="row">
+		
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" > 
+				Add Account
+			</button>
+		
+	 </div>
+	 
+	 
+	 <div class="row" padding-top="5px">
 		
 		
-		<table id ="datatables" class="table table-hover" aria-describedby="datatables_info">
+		<table id ="datatables" class="table table-hover" >
 		 <thead>
 			<tr>
             <th></th>
@@ -70,13 +77,54 @@
   
 		</table>
 		
+		
+	  </div>
+	  
 	  </div>
 	  
 	  
 	  
+	  <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Account</h4>
+      </div>
+      <div class="modal-body">
+           <form>
+					  <div class="form-group">
+						<label>Name</label>
+						<input class="form-control"  placeholder="Name">
+					  </div>
+					  
+					  <div class="form-group">
+						<label>Person of Contact</label>
+						<input class="form-control"  placeholder="POC">
+					  </div>
+					 
+					 <div class="form-group">
+						<label>Contact Number</label>
+						<input class="form-control"  placeholder="Contact Number">
+					  </div>
+					  
+					  <div class="form-group">
+						<label>Credit Limit</label>
+						<input class="form-control"  placeholder="Limit">
+					  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+	  </form>
+    </div>
+  </div>
+</div>
 	  
 	  
-	  
+</div>
 	  
 	  
 	  
@@ -87,3 +135,10 @@
 
  
 <?php $this->load->view('admin/components/main_tail'); ?>
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#datatables').DataTable();
+} );
+  });
+</script>

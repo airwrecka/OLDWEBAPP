@@ -1,6 +1,6 @@
 
 <!--  ==== HEADER ==== -->
-<?php $this->load->view('admin/components/main_head'); ?>
+<?php $this->load->view('admin/components/main_head', array('num' => 1, 'title' => 'HOME')); ?>
 
 
 <!--  ==== NAVBAR==== -->

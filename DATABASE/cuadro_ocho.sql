@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2016 at 04:41 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: Dec 05, 2016 at 04:04 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `cuadro_ocho`
@@ -26,13 +26,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `accounts`
 --
 
-CREATE TABLE `accounts` (
-  `account_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `accounts` (
+  `account_id` int(11) NOT NULL AUTO_INCREMENT,
   `account_name` varchar(300) NOT NULL,
   `person_of_contact` int(11) NOT NULL,
   `contact_number` int(11) NOT NULL,
-  `credit_limit` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `credit_limit` int(11) NOT NULL,
+  PRIMARY KEY (`account_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -40,8 +41,8 @@ CREATE TABLE `accounts` (
 -- Table structure for table `inventory`
 --
 
-CREATE TABLE `inventory` (
-  `product_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `inventory` (
+  `product_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_qty` int(11) NOT NULL,
   `product_name` varchar(500) NOT NULL,
   `product_fraight_cost` int(11) NOT NULL,
@@ -50,8 +51,11 @@ CREATE TABLE `inventory` (
   `product_evaluation_cost` int(11) NOT NULL,
   `product_date` date NOT NULL,
   `product_desc` varchar(800) NOT NULL,
-  `product_supplier` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `product_supplier` varchar(500) NOT NULL,
+  PRIMARY KEY (`product_id`),
+  KEY `product_name` (`product_name`),
+  KEY `product_supplier` (`product_supplier`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -59,8 +63,8 @@ CREATE TABLE `inventory` (
 -- Table structure for table `sales`
 --
 
-CREATE TABLE `sales` (
-  `sales_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `sales` (
+  `sales_id` int(11) NOT NULL AUTO_INCREMENT,
   `sales_category` varchar(300) NOT NULL,
   `sales_date` datetime NOT NULL,
   `sales_receipt_num` int(11) NOT NULL,
@@ -71,8 +75,13 @@ CREATE TABLE `sales` (
   `sales_mop` int(11) NOT NULL,
   `sales_prod_name` varchar(500) NOT NULL,
   `sales_supplier` varchar(500) NOT NULL,
-  `sales_price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `sales_price` int(11) NOT NULL,
+  PRIMARY KEY (`sales_id`),
+  KEY `sales_product_code` (`sales_product_code`),
+  KEY `sales_product_code_2` (`sales_product_code`),
+  KEY `sales_prod_name` (`sales_prod_name`),
+  KEY `sales_supplier` (`sales_supplier`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -80,72 +89,39 @@ CREATE TABLE `sales` (
 -- Table structure for table `supplier`
 --
 
-CREATE TABLE `supplier` (
-  `supplier_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `supplier` (
+  `supplier_id` int(11) NOT NULL AUTO_INCREMENT,
   `supplier_name` varchar(300) NOT NULL,
   `supplier_poc` varchar(300) NOT NULL,
   `supplier_contact` int(11) NOT NULL,
-  `supplier_address` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `supplier_address` int(11) NOT NULL,
+  PRIMARY KEY (`supplier_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Table structure for table `users`
 --
 
---
--- Indexes for table `accounts`
---
-ALTER TABLE `accounts`
-  ADD PRIMARY KEY (`account_id`);
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `firstname` varchar(30) NOT NULL,
+  `lastname` varchar(30) NOT NULL,
+  `type` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Indexes for table `inventory`
---
-ALTER TABLE `inventory`
-  ADD PRIMARY KEY (`product_id`),
-  ADD KEY `product_name` (`product_name`),
-  ADD KEY `product_supplier` (`product_supplier`);
-
---
--- Indexes for table `sales`
---
-ALTER TABLE `sales`
-  ADD PRIMARY KEY (`sales_id`),
-  ADD KEY `sales_product_code` (`sales_product_code`),
-  ADD KEY `sales_product_code_2` (`sales_product_code`),
-  ADD KEY `sales_prod_name` (`sales_prod_name`),
-  ADD KEY `sales_supplier` (`sales_supplier`);
-
---
--- Indexes for table `supplier`
---
-ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`supplier_id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Dumping data for table `users`
 --
 
---
--- AUTO_INCREMENT for table `accounts`
---
-ALTER TABLE `accounts`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `inventory`
---
-ALTER TABLE `inventory`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `sales`
---
-ALTER TABLE `sales`
-  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `supplier`
---
-ALTER TABLE `supplier`
-  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT;
+INSERT INTO `users` (`user_id`, `username`, `password`, `firstname`, `lastname`, `type`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'John', 'Doe', 0),
+(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'John', 'Does', 1);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
