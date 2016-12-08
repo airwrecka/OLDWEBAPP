@@ -12,7 +12,7 @@
 <div class="container">
 
       <div class="starter-template">
-        <h1>sales</h1>
+        <h1>SALES - COMING SOON</h1>
         <p class="lead"></p>
       </div>
 

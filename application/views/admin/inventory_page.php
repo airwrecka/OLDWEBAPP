@@ -12,7 +12,7 @@
 <div class="container">
 
       <div class="starter-template">
-        <h1>inventory</h1>
+        <h1>INVENTORY - COMING SOON</h1>
         <p class="lead"></p>
       </div>
 

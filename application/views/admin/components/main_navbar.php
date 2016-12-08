@@ -32,19 +32,33 @@
 			      <li class="<?php if($num == 5): ?>active<?php endif;?>"><?php echo anchor('sales', '<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Sales</a>'); ?>
 			      </li>
             
-            <li class="dropdown <?php if($num == 6): ?>active<?php endif;?>">
+           
+
+			    
+
+          </ul>
+		  
+		  <ul class="nav navbar-nav navbar-right">
+		  
+		   <li class="dropdown <?php if($num == 6): ?>active<?php endif;?>">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
+					<li><a href="#">Settings</a></li>				
+					<li><a href="#">Change Password</a></li>	
+					<li role="separator" class="divider"></li>
                     <!-- <li><a href="<?php echo base_url();?>admin/change_password/<?php echo $this->session->userdata('id');?>">Change Password</a></li> -->
-                    <li><a href="<?php echo base_url();?>home/logout">Logout</a></li>                  
+                    <li><a href="<?php echo base_url();?>home/logout">Logout</a></li>      
+
+					
                 </ul>
             </li>
-
-			    <?php } ?>
-
-            
 			
-          </ul>
+		
+		  
+		  
+		  <?php } ?>
+		  </ul>
+		  
         </div><!--/.nav-collapse -->
       </div>
     </nav>
