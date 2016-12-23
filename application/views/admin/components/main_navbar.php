@@ -32,6 +32,11 @@
 			      <li class="<?php if($num == 5): ?>active<?php endif;?>"><?php echo anchor('sales', '<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Sales</a>'); ?>
 			      </li>
             
+				  <li class="<?php if($num == 5): ?>active<?php endif;?>"><?php echo anchor('w_transfer', '<span class="glyphicon glyphicon-sort" aria-hidden="true"></span> Warehouse Transfers</a>'); ?>
+			      </li>
+				  
+				  
+            
            
 
 			    
